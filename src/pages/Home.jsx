@@ -1,27 +1,27 @@
-import { CssBaseline, Grid } from '@material-ui/core';
+import { CssBaseline, Grid } from "@material-ui/core";
 
 // components
-import Header from '../components/Header/Header';
-import List from '../components/List/List';
-import Map from '../components/Map/Map';
+import Header from "../components/Header/Header";
+import List from "../components/List/List";
+import Map from "../components/Map/Map";
 
 // ----------------------------------------------------------------------
 
 const Home = () => {
   return (
     <>
-    <CssBaseline />
-    <Header />
-    <Grid container spacing={3} style={{ width: '100%' }}>
-      <Grid item xs={12} md={4}>
-        <List />
+      <CssBaseline />
+      <Header />
+      <Grid container spacing={3} style={{ width: "100%" }}>
+        <Grid item xs={12} md={4}>
+          <List />
+        </Grid>
+        <Grid item xs={12} md={8}>
+          <Map />
+        </Grid>
       </Grid>
-      <Grid item xs={12} md={8}>
-        <Map />
-      </Grid>
-    </Grid>
-  </>
-  )
-}
+    </>
+  );
+};
 
-export default Home
+export default Home;
