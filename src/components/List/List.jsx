@@ -31,26 +31,10 @@ const GridStyle = styled(Grid)(() => ({
 
 // ----------------------------------------------------------------------
 
-const List = () => {
+const List = ({ places }) => {
   const [type, setType] = useState("restaurants");
 
   const [rating, setRating] = useState("");
-
-  //dummy data
-  const places = [
-    { name: "Cool place" },
-    { name: "Best Beer" },
-    { name: "Best steak" },
-    { name: "Cool place" },
-    { name: "Best Beer" },
-    { name: "Best steak" },
-    { name: "Cool place" },
-    { name: "Best Beer" },
-    { name: "Best steak" },
-    { name: "Cool place" },
-    { name: "Best Beer" },
-    { name: "Best steak" },
-  ];
 
   return (
     <ContainerStyle>
