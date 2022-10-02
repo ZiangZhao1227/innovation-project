@@ -14,8 +14,8 @@ const Home = () => {
   const [places, setPlaces] = useState([]);
 
   const [coordinates, setCoordinates] = useState({});
-  
-  const [bounds, setBounds] = useState(null);
+
+  const [bounds, setBounds] = useState({});
 
   // get user's initial coords
   useEffect(() => {
@@ -30,7 +30,7 @@ const Home = () => {
     getPlacesData(bounds?.sw, bounds?.ne).then((data) => {
       setPlaces(data);
     });
-  }, [coordinates, bounds]);
+  }, [bounds]);
 
   return (
     <>
