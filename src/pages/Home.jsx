@@ -40,11 +40,22 @@ const Home = () => {
         <Grid item xs={12} md={4}>
           <List places={places} />
         </Grid>
-        <Grid item xs={12} md={8}>
+        <Grid
+          spacing={2}
+          item
+          xs={12}
+          md={8}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Map
             setBounds={setBounds}
             setCoordinates={setCoordinates}
             coordinates={coordinates}
+            places={places}
           />
         </Grid>
       </Grid>

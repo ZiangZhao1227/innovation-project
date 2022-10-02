@@ -7,6 +7,7 @@ import {
   CardContent,
   CardActions,
   Chip,
+  Divider,
 } from "@mui/material";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PhoneIcon from "@material-ui/icons/Phone";
@@ -36,7 +37,7 @@ const SpacingStyle = styled(Typography)(() => ({
 
 const PlaceDetails = ({ place }) => {
   return place.name ? (
-    <Card elevation={6}>
+    <Card elevation={6} sx={{ borderRadius: 5 }}>
       <CardMedia
         style={{ height: 350 }}
         image={
@@ -54,12 +55,6 @@ const PlaceDetails = ({ place }) => {
           <Rating name="read-only" value={Number(place.rating)} readOnly />
           <Typography component="legend">
             {place.num_reviews} review{place.num_reviews > 1 && "s"}
-          </Typography>
-        </Box>
-        <Box display="flex" justifyContent="space-between">
-          <Typography component="legend">Price</Typography>
-          <Typography gutterBottom variant="subtitle1">
-            {place.price_level}
           </Typography>
         </Box>
         <Box display="flex" justifyContent="space-between">
@@ -96,22 +91,28 @@ const PlaceDetails = ({ place }) => {
           </SpacingStyle>
         )}
       </CardContent>
-      <CardActions>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => window.open(place.web_url, "_blank")}
-        >
-          Trip Advisor
-        </Button>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => window.open(place.website, "_blank")}
-        >
-          Website
-        </Button>
-      </CardActions>
+      {place.web_url && place.website && (
+        <>
+          <Divider sx={{ borderStyle: "dashed" }} />
+
+          <CardActions>
+            <Button
+              size="small"
+              color="primary"
+              onClick={() => window.open(place.web_url, "_blank")}
+            >
+              Trip Advisor
+            </Button>
+            <Button
+              size="small"
+              color="primary"
+              onClick={() => window.open(place.website, "_blank")}
+            >
+              Website
+            </Button>
+          </CardActions>
+        </>
+      )}
     </Card>
   ) : (
     <></>
