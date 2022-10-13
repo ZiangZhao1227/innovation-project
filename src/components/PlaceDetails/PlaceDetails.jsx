@@ -1,3 +1,4 @@
+// mui
 import {
   Box,
   Typography,
@@ -35,7 +36,9 @@ const SpacingStyle = styled(Typography)(() => ({
 
 // ----------------------------------------------------------------------
 
-const PlaceDetails = ({ place }) => {
+const PlaceDetails = ({ place, selected, refProp }) => {
+  if (selected)
+    refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   return place.name ? (
     <Card elevation={6} sx={{ borderRadius: 5 }}>
       <CardMedia

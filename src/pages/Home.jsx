@@ -13,9 +13,13 @@ import { getPlacesData } from "../api/index";
 const Home = () => {
   const [places, setPlaces] = useState([]);
 
+  const [childClicked, setChildClicked] = useState(null);
+
   const [coordinates, setCoordinates] = useState({});
 
   const [bounds, setBounds] = useState({});
+
+  const [isLoading, setIsLoading] = useState(false);
 
   // get user's initial coords
   useEffect(() => {
@@ -27,8 +31,11 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
+
     getPlacesData(bounds?.sw, bounds?.ne).then((data) => {
       setPlaces(data);
+      setIsLoading(false);
     });
   }, [bounds]);
 
@@ -38,7 +45,11 @@ const Home = () => {
       <Header />
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
-          <List places={places} />
+          <List
+            places={places}
+            childClicked={childClicked}
+            isLoading={isLoading}
+          />
         </Grid>
         <Grid
           spacing={2}
@@ -56,6 +67,7 @@ const Home = () => {
             setCoordinates={setCoordinates}
             coordinates={coordinates}
             places={places}
+            setChildClicked={setChildClicked}
           />
         </Grid>
       </Grid>

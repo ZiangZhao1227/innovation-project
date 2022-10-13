@@ -1,3 +1,4 @@
+// google-map-react
 import GoogleMapReact from "google-map-react";
 // mui
 import { Box, Paper, Rating, Typography, useMediaQuery } from "@mui/material";
@@ -23,7 +24,13 @@ const PaperStyle = styled(Paper)(() => ({
 
 // ----------------------------------------------------------------------
 
-const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
+const Map = ({
+  coordinates,
+  setCoordinates,
+  setBounds,
+  places,
+  setChildClicked,
+}) => {
   const isDeskTop = useMediaQuery("(min-width:600px)");
 
   return (
@@ -38,6 +45,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places }) => {
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
+        onChildClick={(child) => setChildClicked(child)}
       >
         {places?.map((place, i) =>
           place.name ? (
